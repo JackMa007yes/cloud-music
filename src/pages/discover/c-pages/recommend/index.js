@@ -1,18 +1,22 @@
 import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { Carousel } from "antd";
 import { getTopBannerAction } from "./store/actionCreators";
+import TopBanner from "./components/top-banner";
+
+import {
+  RecommendWraper,
+  Content,
+  RecommendLeft,
+  RecommendRight,
+} from "./style";
 
 const Recommend = (props) => {
-  const dispatch = useDispatch();
-  const { topBanners } = useSelector((state) => ({
-    topBanners: state.recommend.topBanners,
-  }), shallowEqual);
-
-  useEffect(() => {
-    dispatch(getTopBannerAction());
-  }, [dispatch]);
-
-  return <h1>{JSON.stringify(topBanners)}</h1>;
+  return (
+    <RecommendWraper>
+      <TopBanner></TopBanner>
+    </RecommendWraper>
+  );
 };
 
 export default memo(Recommend);

@@ -1993,6 +1993,14 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/redux-immutable@^4.0.2":
+  version "4.0.2"
+  resolved "http://r.npm.sankuai.com/@types/redux-immutable/download/@types/redux-immutable-4.0.2.tgz#8c3c666c33130c6794280bc3dc7726bfa0cfacc7"
+  integrity sha1-jDxmbDMTDGeUKAvD3Hcmv6DPrMc=
+  dependencies:
+    immutable "^4.0.0-rc.1"
+    redux "^4.0.0"
+
 "@types/resolve@1.17.1":
   version "1.17.1"
   resolved "http://r.npm.sankuai.com/@types/resolve/download/@types/resolve-1.17.1.tgz#3afd6ad8967c77e4376c598a82ddd58f46ec45d6"
@@ -5024,6 +5032,11 @@ immer@^9.0.7:
   resolved "http://r.npm.sankuai.com/immer/download/immer-9.0.12.tgz#2d33ddf3ee1d247deab9d707ca472c8c942a0f20"
   integrity sha1-LTPd8+4dJH3qudcHykcsjJQqDyA=
 
+immutable@^4.0.0, immutable@^4.0.0-rc.1:
+  version "4.0.0"
+  resolved "http://r.npm.sankuai.com/immutable/download/immutable-4.0.0.tgz#b86f78de6adef3608395efb269a91462797e2c23"
+  integrity sha1-uG943mre82CDle+yaakUYnl+LCM=
+
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
   resolved "http://r.npm.sankuai.com/import-fresh/download/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -7934,12 +7947,17 @@ redux-devtools-extension@^2.13.9:
   resolved "http://r.npm.sankuai.com/redux-devtools-extension/download/redux-devtools-extension-2.13.9.tgz#6b764e8028b507adcb75a1cae790f71e6be08ae7"
   integrity sha1-a3ZOgCi1B63LdaHK55D3Hmvgiuc=
 
+redux-immutable@^4.0.0:
+  version "4.0.0"
+  resolved "http://r.npm.sankuai.com/redux-immutable/download/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
+  integrity sha1-Ohoy32Y2ZGK2NpHw4dw15HK7yfM=
+
 redux-thunk@^2.4.1:
   version "2.4.1"
   resolved "http://r.npm.sankuai.com/redux-thunk/download/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
   integrity sha1-DdgELPR4aPSylpmUHeA8kwGnVxQ=
 
-redux@^4.1.2:
+redux@^4.0.0, redux@^4.1.2:
   version "4.1.2"
   resolved "http://r.npm.sankuai.com/redux/download/redux-4.1.2.tgz#140f35426d99bb4729af760afcf79eaaac407104"
   integrity sha1-FA81Qm2Zu0cpr3YK/PeeqqxAcQQ=
