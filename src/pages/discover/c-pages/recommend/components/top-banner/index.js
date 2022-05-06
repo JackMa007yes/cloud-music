@@ -27,15 +27,15 @@ export default memo(() => {
     }, 0);
   }, []);
 
-  const bgImage = topBanners[currentIndex] && (topBanners[currentIndex].imageUrl + "?imageView&blur=40x20")
+  const bgImage = topBanners && topBanners[currentIndex] && (topBanners[currentIndex].imageUrl + "?imageView&blur=40x20")
 
   return (
     <BannerWrapper bgImage={bgImage}>
       <div className="banner wrap-v2">
         <BannerLeft>
-        <Carousel autoplay effect="fade" beforeChange={bannerChange} ref={bannerRef}>
+          <Carousel autoplay effect="fade" beforeChange={bannerChange} ref={bannerRef}>
             {
-              topBanners.map((item, index) => {
+              (topBanners || []).map((item, index) => {
                 return (
                   <div className="banner-item" key={item.imageUrl}>
                     <img className="image" src={item.imageUrl} alt={item.typeTitle} />

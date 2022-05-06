@@ -14,13 +14,36 @@ export const BannerWrapper = styled.div`
 
 export const BannerLeft = styled.div`
   width: 730px;
-
   .banner-item {
     overflow: hidden;
     height: 285px;
     .image {
       width: 100%;
       height: 285px;
+    }
+  }
+  .slick-dots li {
+    display: inline-block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    &:hover {
+      button {
+        background-color: red;
+      }
+    }
+    button {
+      margin-top: 8px;
+      margin-left: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+  }
+  .slick-dots > .slick-active {
+    button {
+      background-color: red !important;
     }
   }
 `

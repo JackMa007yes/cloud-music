@@ -1,14 +1,17 @@
 import request from "./axios";
 
-export function getTopBanner() {
+export function getTopBanners() {
   return request({
     url: "/banner"
   })
 }
 
-export function getHotRecommend() {
+export function getHotRecommend(limit) {
   return request({
-    url: "/personalized"
+    url: "/personalized",
+    params: {
+      limit
+    }
   })
 }
 
