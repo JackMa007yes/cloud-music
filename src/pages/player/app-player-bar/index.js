@@ -44,6 +44,14 @@ const index = memo(() => {
   useEffect(() => {
     dispatch(getSongDetailAction(167876));
   }, [dispatch]);
+  useEffect(() => {
+    audioRef.current.src = getPlayUrl(currentSong.id);
+    audioRef.current
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch((err) => setIsPlaying(false)); // 浏览器不允许用户操作页面前播放音频，如果播放失败则将isPlaying置为false
+    setIsPlaying(true);
+  }, [currentSong]);
 
   const picUrl = currentSong?.al?.picUrl || "";
   const duration = currentSong.dt;
@@ -51,39 +59,58 @@ const index = memo(() => {
   //   const progress = currentTime / duration * 100
 
   const playMusic = () => {
-    audioRef.current.src = getPlayUrl(currentSong.id);
-    setIsPlaying(!isPlaying)
-    if (isPlaying){
-        audioRef.current.pause()
-        audioRef.current.currentTime = currentTime / 1000
+    // audioRef.current.src = getPlayUrl(currentSong.id);
+    setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = currentTime / 1000;
     } else {
-        audioRef.current.currentTime = currentTime / 1000
-        audioRef.current.play();
-    } 
+      audioRef.current.currentTime = currentTime / 1000;
+      audioRef.current.play();
+    }
   };
   const timeUpdate = (e) => {
     !frozeTimeUpdate && setCurrentTime(e.target.currentTime * 1000);
   };
   const sliderChange = useCallback((value) => {
-    setFrozeTimeUpdate(true)
-    setCurrentTime(value)
-  }, []); 
+    setFrozeTimeUpdate(true);
+    setCurrentTime(value);
+  }, []);
   const sliderAfterChange = useCallback((value) => {
-    setFrozeTimeUpdate(false)
-    setCurrentTime(value)
+    setFrozeTimeUpdate(false);
+    setCurrentTime(value);
     audioRef.current.currentTime = value / 1000;
   }, []);
+  const changeMusic = (tag) => {
+    dispatch(changePlaySongAction(tag));
+  };
+  const handleMusicEnded = () => {
+    if (playSequence === 2) {
+      setTimeout(() => {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      }, 2000);
+    } else {
+      dispatch(changePlaySongAction(1));
+    }
+  };
 
   return (
     <PlaybarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
         <Control isPlaying={isPlaying}>
-          <button className="sprite_playbar btn prev"></button>
+          <button
+            className="sprite_playbar btn prev"
+            onClick={(e) => changeMusic(-1)}
+          ></button>
           <button
             className="sprite_playbar btn play"
             onClick={(e) => playMusic()}
           ></button>
-          <button className="sprite_playbar btn next"></button>
+          <button
+            className="sprite_playbar btn next"
+            onClick={(e) => changeMusic(1)}
+          ></button>
         </Control>
         <PlayInfo>
           <div className="image">
@@ -136,7 +163,11 @@ const index = memo(() => {
           </div>
         </Operator>
       </div>
-      <audio ref={audioRef} onTimeUpdate={timeUpdate}></audio>
+      <audio
+        ref={audioRef}
+        onTimeUpdate={timeUpdate}
+        onEnded={handleMusicEnded}
+      ></audio>
     </PlaybarWrapper>
   );
 });

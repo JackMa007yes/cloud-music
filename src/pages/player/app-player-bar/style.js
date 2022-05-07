@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PlaybarWrapper = styled.div`
   position: fixed;
@@ -20,32 +20,48 @@ export const PlaybarWrapper = styled.div`
     bottom: 0;
     height: 47px;
   }
-`
+`;
 
 export const Control = styled.div`
   display: flex;
   align-items: center;
 
-  .prev, .next {
+  .prev,
+  .next {
     width: 28px;
     height: 28px;
   }
 
   .prev {
     background-position: 0 -130px;
+    opacity: 0.6;
+    :hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
 
   .play {
     width: 36px;
     height: 36px;
     margin: 0 8px;
-    background-position: 0 ${props => props.isPlaying ? "-165px": "-204px"};
+    background-position: 0 ${(props) => (props.isPlaying ? "-165px" : "-204px")};
+    opacity: 0.6;
+    :hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
 
   .next {
     background-position: -80px -130px;
+    opacity: 0.6;
+    :hover {
+      opacity: 1;
+      cursor: pointer;
+    }
   }
-`
+`;
 
 export const PlayInfo = styled.div`
   display: flex;
@@ -112,8 +128,7 @@ export const PlayInfo = styled.div`
       }
     }
   }
-  
-`
+`;
 
 export const Operator = styled.div`
   display: flex;
@@ -145,8 +160,8 @@ export const Operator = styled.div`
     }
 
     .loop {
-      background-position: ${props => {
-        switch(props.sequence) {
+      background-position: ${(props) => {
+        switch (props.sequence) {
           case 1:
             return "-66px -248px";
           case 2:
@@ -165,4 +180,4 @@ export const Operator = styled.div`
       background-position: -42px -68px;
     }
   }
-`
+`;

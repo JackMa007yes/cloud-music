@@ -2,12 +2,18 @@ import React, { memo } from "react";
 
 import { TopRankingWrapper } from "./style";
 import { getSizeImage } from "@/utils/format-utils";
+import { useDispatch } from "react-redux";
+import { getSongDetailAction } from "@/pages/player/store";
 
 const index = memo((props) => {
   const { info } = props;
   const { tracks = [] } = info;
 
-  const playMusic = () => {};
+  const dispatch = useDispatch();
+
+  const playMusic = (item) => {
+    dispatch(getSongDetailAction(item.id));
+  };
 
   return (
     <TopRankingWrapper>
