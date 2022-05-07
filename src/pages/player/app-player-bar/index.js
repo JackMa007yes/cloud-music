@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { message } from "antd";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Slider } from "antd";
 import { PlaybarWrapper, Control, PlayInfo, Operator } from "./style";
@@ -70,7 +71,28 @@ const index = memo(() => {
     }
   };
   const timeUpdate = (e) => {
-    !frozeTimeUpdate && setCurrentTime(e.target.currentTime * 1000);
+    const currentTime = e.target.currentTime;
+    !frozeTimeUpdate && setCurrentTime(currentTime * 1000);
+
+    let lrcLength = currentLyrics.length;
+    let i = 0;
+    for (; i < lrcLength; i++) {
+      const lrcTime = currentLyrics[i].time;
+      if (currentTime * 1000 < lrcTime) {
+        break;
+      }
+    }
+    const finalIndex = i - 1;
+    if (finalIndex !== currentLyricIndex) {
+      dispatch(changeCurrentLyricIndexAction(finalIndex));
+      currentLyrics[finalIndex].content &&
+        message.open({
+          content: currentLyrics[finalIndex].content,
+          key: "lyric",
+          duration: 0,
+          className: "lyric-message",
+        });
+    }
   };
   const sliderChange = useCallback((value) => {
     setFrozeTimeUpdate(true);
@@ -93,6 +115,7 @@ const index = memo(() => {
     } else {
       dispatch(changePlaySongAction(1));
     }
+    message.destroy();
   };
 
   return (
