@@ -1,11 +1,11 @@
-import React, { memo, useEffect } from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { Carousel } from "antd";
-import { getTopBannerAction } from "./store/actionCreators";
+import React, { memo } from "react";
 import TopBanner from "./components/top-banner";
 import NewAlbum from "./components/new-album";
 import RecommendRanking from "./components/recommend-ranking";
 import HotRecomand from "./components/hot-recomand/index";
+import UserLogin from './components/user-login';
+import SettleSinger from './components/settle-singer';
+import HotRadio from './components/hot-radio';
 
 import {
   RecommendWraper,
@@ -24,7 +24,11 @@ const Recommend = (props) => {
           <NewAlbum></NewAlbum>
           <RecommendRanking></RecommendRanking>
         </RecommendLeft>
-        <RecommendRight></RecommendRight>
+        <RecommendRight>
+        <UserLogin />
+          <SettleSinger />
+          <HotRadio />
+        </RecommendRight>
       </Content>
     </RecommendWraper>
   );

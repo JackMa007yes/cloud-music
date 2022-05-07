@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 
 const friends = memo(() => {
   return (
-    <div>friend</div>
+    <h1>friend</h1>
   )
 })
 

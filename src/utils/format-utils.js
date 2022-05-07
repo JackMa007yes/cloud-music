@@ -1,4 +1,4 @@
-export function getSizeImage(imgUrl, size) {
+export function getSizeImage(imgUrl, size = 80) {
   return `${imgUrl}?param=${size}x${size}`;
 }
 

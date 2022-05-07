@@ -4,7 +4,11 @@ import * as actionTypes from "./constants";
 const defaultState = Map({
   topBanners: [],
   hotRecommends: [],
-  newAlbums: []
+  newAlbums: [],
+  topUpList: {},
+  topNewList: {},
+  topOriginList: {},
+  settleSings: [],
 });
 
 function reducer(state = defaultState, action) {
@@ -15,6 +19,14 @@ function reducer(state = defaultState, action) {
       return state.set("hotRecommends", action.hotRecommends);
     case actionTypes.CHANGE_NEW_ALBUMS:
       return state.set("newAlbums", action.newAlbums);
+    case actionTypes.CHANGE_UP_LIST:
+      return state.set("topUpList", action.topUpList);
+    case actionTypes.CHANGE_NEW_LIST:
+      return state.set("topNewList", action.topNewList);
+    case actionTypes.CHANGE_ORIGIN_LIST:
+      return state.set("topOriginList", action.topOriginList);
+    case actionTypes.CHANGE_SETTLE_SONGER:
+      return state.set("settleSings", action.settleSings)
     default:
       return state;
   }
